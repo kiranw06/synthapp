@@ -1,0 +1,61 @@
+<!-- <p>This is the about view.</p>
+
+<div ng-app ng-init="firstnum=1;secondnum=2">
+  <input type="number" min="0" ng-model="firstnum">
+    <span class="glyphicon glyphicon-hourglass" aria-hidden="true"></span>
+  <input type="number" min="0" ng-model="secondnum"> 
+  	=
+    <span class="glyphicon glyphicon-sunglasses" aria-hidden="true"></span>
+ 	<a href="#">high fives <span class="badge">{{firstnum + secondnum}}</span></a>
+	<button class="btn btn-primary" type="button">
+	  happy dances <span class="badge">{{firstnum*secondnum}}</span>
+	</button>
+</div> -->
+
+  <div id="page-wrapper" class="clearfix">
+    <div id="info" class="row">
+      <div class="col-xs-12 bg-info">
+      <h1>Synth</h1>
+        <p>
+          Audio data. Inerface coming soon!
+        </p>
+      </div>
+    </div>
+    <div class="row">
+      <div class="col-xs-3 bg-success">
+        <h2>
+          Oscilator: 
+        </h2> 
+        <span id="oscillator">{{oscillator.type}}</span>
+      </div>
+      <div class="col-xs-3 bg-warning">
+        <h2>
+          Octave: 
+        </h2> 
+        <span id="key">{{oscillator.frequency.value}}</span>
+      </div>
+      <div class="col-xs-3 bg-success">
+        <h2>
+          Volume:
+        </h2> 
+        <span id="volume">{{gainNode.gain.value}}</span>
+      </div>
+      <div class="col-xs-3 bg-warning">
+        <h2>
+          Patches: 
+        </h2> 
+        <span id="patches">n/a</span>
+      </div>
+    </div>
+    <div class="row synth-canvas">
+      <div class="row">
+        <div class="col-xs-12 bg-info">
+          <h2>
+            Canvas
+          </h2>
+          <canvas id="canvas"></canvas>
+        </div>
+      </div>
+    </div>
+  </div>
+  <!-- <script src="scripts/synthpad.js"></script> -->
