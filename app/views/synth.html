@@ -13,6 +13,8 @@
 </div> -->
 
   <div id="page-wrapper" class="clearfix">
+    <!-- <div ng-app="synthappApp" ng-strict-di> -->
+    <div ng-controller="testaudio"></div>
     <div id="info" class="row">
       <div class="col-xs-12 bg-info">
       <h1>Synth</h1>
@@ -53,6 +55,7 @@
           <h2>
             Canvas
           </h2>
+          <button class="btn btn-lrg" ng-click="testaudio">Play</button>
           <canvas id="canvas"></canvas>
         </div>
       </div>

@@ -30,7 +30,7 @@ var audioCtx = new (window.AudioContext || window.webkitAudioContext)();
     oscillator.frequency.value = initialFreq;
 
 
-//TODO Create Nodes
+//TODO Create Effects Nodes
 
  
 
@@ -44,7 +44,9 @@ var audioCtx = new (window.AudioContext || window.webkitAudioContext)();
   oscillator.connect(gainNode);
   gainNode.connect(audioCtx.destination);
 
-//TODO 
+
+
+// Call Function
  
 oscillator.start();
 

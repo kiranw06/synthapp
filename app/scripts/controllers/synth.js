@@ -2,9 +2,9 @@
 
 /**
  * @ngdoc function
- * @name synthappApp.controller:AboutCtrl
+ * @name synthappApp.controller:SynthCtrl
  * @description
- * # AboutCtrl
+ * # SynthCtrl
  * Controller of the synthappApp
  */
 angular.module('synthappApp')
@@ -16,7 +16,7 @@ angular.module('synthappApp')
     //         audioCtx: $scope.webkitAudioContext
     //     });
     // };
-    $scope.testaudio= function(){
+    $scope.testaudio = function(){
      // Synthapp Main Scripts
 
 
@@ -27,7 +27,7 @@ angular.module('synthappApp')
         //TODO Create Audio Source
         
           // Oscilator
-            oscillator = audioCtx.createOscillator();
+            var oscillator = audioCtx.createOscillator();
             // Oscilator (Waveform)
             oscillator.type = 'sine'; 
             
@@ -71,5 +71,5 @@ angular.module('synthappApp')
         
         console.log(oscillator.start);
     };
-
+    return;
   });
