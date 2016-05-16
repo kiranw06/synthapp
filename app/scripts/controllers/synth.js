@@ -7,6 +7,8 @@
  * # SynthCtrl
  * Controller of the synthappApp
  */
+ 
+
 angular.module('synthappApp')
   .controller('SynthCtrl', function ($scope) {
     // $scope.current = current.query();
@@ -16,6 +18,9 @@ angular.module('synthappApp')
     //         audioCtx: $scope.webkitAudioContext
     //     });
     // };
+    $scope.displayButton="Play";
+  	
+
     $scope.testaudio = function(){
      // Synthapp Main Scripts
 
@@ -27,12 +32,12 @@ angular.module('synthappApp')
         //TODO Create Audio Source
         
           // Oscilator
-            var oscillator = audioCtx.createOscillator();
+            $scope.oscillator = audioCtx.createOscillator();
             // Oscilator (Waveform)
-            oscillator.type = 'sine'; 
+            //$scope.oscillator.type = 'sine'; 
             
           //TODO Volume Node 
-            var gainNode = audioCtx.createGain();
+            $scope.gainNode = audioCtx.createGain();
         
         
         //TODO Make Controll Variables
@@ -45,8 +50,8 @@ angular.module('synthappApp')
             var initialVol = 0.05; 
         
             // Set equal to control values  
-            gainNode.gain.value = initialVol;
-            oscillator.frequency.value = initialFreq;
+            $scope.gainNode.gain.value = initialVol;
+            $scope.oscillator.frequency.value = initialFreq;
         
         
         //TODO Create Effects Nodes
@@ -60,16 +65,14 @@ angular.module('synthappApp')
         
         
         //TODO Connect Source and Desitination
-          oscillator.connect(gainNode);
-          gainNode.connect(audioCtx.destination);
+          $scope.oscillator.connect($scope.gainNode);
+          $scope.gainNode.connect(audioCtx.destination);
         
         
         
         // Call Function
-         
-        oscillator.start();
         
-        console.log(oscillator.start);
+        console.log($scope.oscillator.start);
     };
     return;
   });

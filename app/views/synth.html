@@ -12,14 +12,12 @@
 	</button>
 </div> -->
 
-  <div id="page-wrapper" class="clearfix">
-    <!-- <div ng-app="synthappApp" ng-strict-di> -->
-    <div ng-controller="testaudio"></div>
+  <div id="page-wrapper" class="clearfix" ng-controller="testaudio">
     <div id="info" class="row">
       <div class="col-xs-12 bg-info">
       <h1>Synth</h1>
         <p>
-          Audio data. Inerface coming soon!
+          Audio data. Interface coming soon!
         </p>
       </div>
     </div>
@@ -28,19 +26,30 @@
         <h2>
           Oscilator: 
         </h2> 
-        <span id="oscillator">{{oscillator.type}}</span>
-      </div>
+        <div id="oscillator" class="radio">
+          <label><input type="radio" ng-click="oscillator.type = 'sine'" name="optradio">Sine</label>
+          </div>
+          <div class="radio">
+            <label><input type="radio" ng-click="oscillator.type = 'triangle'" name="optradio">Triangle</label>
+          </div>
+          <div class="radio">
+            <label><input type="radio" ng-click="oscillator.type = 'square'" name="optradio">Square</label>
+          </div>
+          <div class="radio">
+            <label><input type="radio" ng-click="oscillator.type = 'sawtooth'" name="optradio">Sawtooth</label>
+          </div>
+        </div>
       <div class="col-xs-3 bg-warning">
         <h2>
           Octave: 
         </h2> 
-        <span id="key">{{oscillator.frequency.value}}</span>
+        <span id="key"> {{oscillator.frequency.value}} </span>
       </div>
       <div class="col-xs-3 bg-success">
         <h2>
           Volume:
         </h2> 
-        <span id="volume">{{gainNode.gain.value}}</span>
+        <span id="volume"> {{gainNode.gain.value}} </span>
       </div>
       <div class="col-xs-3 bg-warning">
         <h2>
@@ -55,7 +64,8 @@
           <h2>
             Canvas
           </h2>
-          <button class="btn btn-lrg" ng-click="testaudio">Play</button>
+          <button class="btn btn-lrg" ng-click="oscillator.start()" ng-model="displayButton">Play</button>
+          <button class="btn btn-lrg" ng-click="oscillator.stop()" ng-model="displayButton">Pause</button>
           <canvas id="canvas"></canvas>
         </div>
       </div>
