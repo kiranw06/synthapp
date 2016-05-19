@@ -19,6 +19,20 @@ angular.module('synthappApp')
     //     });
     // };
     $scope.displayButton="Play";
+
+
+    // Visibility
+    
+    $scope.isHidden = true;
+        
+    $scope.showHide = function () {
+        //If DIV is hidden it will be visible and vice versa.
+        $scope.isHidden = $scope.isHidden ? false : true;
+        $scope.isVisible = $scope.isVisible ? true : false;
+    };
+
+    
+
   	
 
     $scope.testaudio = function(){
@@ -29,29 +43,42 @@ angular.module('synthappApp')
         
         var audioCtx = new (window.AudioContext || window.webkitAudioContext)();
         
-        //TODO Create Audio Source
+        // Create Audio Source
         
           // Oscilator
             $scope.oscillator = audioCtx.createOscillator();
             // Oscilator (Waveform)
             //$scope.oscillator.type = 'sine'; 
             
-          //TODO Volume Node 
+          // Volume Node 
             $scope.gainNode = audioCtx.createGain();
+
+            $scope.maxVol = 1;
+            $scope.initialVol = 0.05; 
         
         
-        //TODO Make Controll Variables
+            // Frequency
         
-            var maxFreq = 4000;
-            var maxVol = 1;
+            $scope.initialFreq = 261.6;
+            $scope.maxFreq = 4000;
             
-            //TODO Set Key/Frequencey
-            var initialFreq = 261.6;
-            var initialVol = 0.05; 
+            $scope.frequencyArray = {
+                C: [
+                    {
+                        "two": 65.41,
+                        "three": 130.8,
+                        "four": 261.6,
+                        "five": 523.3,
+                        "six": 1047,
+                        "seven": 2093,
+                    },
+                ]
+            };
+            
         
             // Set equal to control values  
-            $scope.gainNode.gain.value = initialVol;
-            $scope.oscillator.frequency.value = initialFreq;
+            $scope.gainNode.gain.value = $scope.initialVol;
+            $scope.oscillator.frequency.value = $scope.initialFreq;
         
         
         //TODO Create Effects Nodes

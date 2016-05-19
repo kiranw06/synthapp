@@ -15,18 +15,18 @@
   <div id="page-wrapper" class="clearfix" ng-controller="testaudio">
     <div id="info" class="row">
       <div class="col-xs-12 bg-info">
-      <h1>Synth</h1>
+        <h1>Synth</h1>
         <p>
           Audio data. Interface coming soon!
         </p>
       </div>
     </div>
-    <div class="row">
+    <div id="patchData" class="row">
       <div class="col-xs-3 bg-success">
         <h2>
-          Oscilator: 
+          Oscilator 
         </h2> 
-        <div id="oscillator" class="radio">
+        <div class="radio oscillator" name="oscilator">
           <label><input type="radio" ng-click="oscillator.type = 'sine'" name="optradio">Sine</label>
           </div>
           <div class="radio">
@@ -41,31 +41,44 @@
         </div>
       <div class="col-xs-3 bg-warning">
         <h2>
-          Octave: 
+          Octave 
         </h2> 
-        <span id="key"> {{oscillator.frequency.value}} </span>
+        <span class="octave" name="frequency" ng-model="oscillator.frequencyArray"> {{oscillator.frequency.value}} 
+          <button class="btn btn-lrg glyphicon glyphicon glyphicon-arrow-up"></button>
+          <button class="btn btn-lrg glyphicon glyphicon glyphicon-arrow-down"></button>
+        </span>
       </div>
       <div class="col-xs-3 bg-success">
         <h2>
-          Volume:
+          Volume
         </h2> 
-        <span id="volume"> {{gainNode.gain.value}} </span>
+        <span class="volume" name="volume" ng-model="gainNode.gain.value"> {{gainNode.gain.value}} </span>
+          <button class="btn btn-lrg glyphicon glyphicon-volume-up" ng-click="gainNode.gain.value = gainNode.gain.value + .01 "></button>
+          <button class="btn btn-lrg glyphicon glyphicon-volume-down" ng-click="gainNode.gain.value = gainNode.gain.value - .01 "></button>
       </div>
       <div class="col-xs-3 bg-warning">
+        <button class="btn btn-lrg pull-right glyphicon glyphicon glyphicon-menu-hamburger" ng-click="showHide()"></button>
         <h2>
-          Patches: 
+          Patches 
         </h2> 
-        <span id="patches">n/a</span>
+        <div ng-hide="isHidden" ng-controller="PatchesCtrl">
+          <span id="patches">
+              <p>Save as {{displayText}}</p>
+              <input type="text" name="patchName" id="patch-name" ng-model="displayText"/>
+              <button class="btn btn-lrg " ng-hide="isHidden" ng-click="savePatch()">Save</button>
+              <a class="btn btn-lrg " ng-hide="isHidden" ng-href="/#/patches">View Patches</a>
+          </span>
+        </div>
       </div>
     </div>
+    </div>
     <div class="row synth-canvas">
-      <div class="row">
         <div class="col-xs-12 bg-info">
           <h2>
             Canvas
           </h2>
-          <button class="btn btn-lrg" ng-click="oscillator.start()" ng-model="displayButton">Play</button>
-          <button class="btn btn-lrg" ng-click="oscillator.stop()" ng-model="displayButton">Pause</button>
+          <button class="btn btn-lrg glyphicon glyphicon-play" ng-click="oscillator.start()" ng-model="displayButton"></button>
+          <button class="btn btn-lrg glyphicon glyphicon-stop" ng-click="oscillator.stop()" ng-model="displayButton"></button>
           <canvas id="canvas"></canvas>
         </div>
       </div>
