@@ -10,15 +10,18 @@
  
 
 angular.module('synthappApp')
-  .controller('SynthCtrl', function ($scope) {
-    // $scope.current = current.query();
+  .controller('SynthCtrl', function ($scope, $localStorage, $rootScope, $routeParams) {
 
-    // $scope.refreshCurrent = function(){
-    //     $scope.current = current.query({
-    //         audioCtx: $scope.webkitAudioContext
-    //     });
-    // };
-    $scope.displayButton="Play";
+    $scope.storage = $localStorage;
+    $scope.displayText = "";
+
+
+    for (patch in $scope.storage ) {
+        $scope.currentPatch == $routeParams.patchData;
+
+
+
+    }
 
 
     // Visibility
@@ -46,15 +49,15 @@ angular.module('synthappApp')
         // Create Audio Source
         
           // Oscilator
-            $scope.oscillator = audioCtx.createOscillator();
+            $rootScope.oscillator = audioCtx.createOscillator();
             // Oscilator (Waveform)
-            //$scope.oscillator.type = 'sine'; 
+            //$rootScope.oscillator.type = 'sine'; 
             
           // Volume Node 
             $scope.gainNode = audioCtx.createGain();
 
             $scope.maxVol = 1;
-            $scope.initialVol = 0.05; 
+            $scope.initialVol = 0.00; 
         
         
             // Frequency
@@ -78,7 +81,7 @@ angular.module('synthappApp')
         
             // Set equal to control values  
             $scope.gainNode.gain.value = $scope.initialVol;
-            $scope.oscillator.frequency.value = $scope.initialFreq;
+            $rootScope.oscillator.frequency.value = $scope.initialFreq;
         
         
         //TODO Create Effects Nodes
@@ -92,14 +95,45 @@ angular.module('synthappApp')
         
         
         //TODO Connect Source and Desitination
-          $scope.oscillator.connect($scope.gainNode);
+          $rootScope.oscillator.connect($scope.gainNode);
           $scope.gainNode.connect(audioCtx.destination);
         
         
         
         // Call Function
         
-        console.log($scope.oscillator.start);
+        
+        $rootScope.oscillator.start();
     };
+
+
+
+    $scope.savePatch = function(text) {
+
+        var patchData = {
+            'patchName': text,
+            'oscillator': $rootScope.oscillator.type,
+            'frequency' : $rootScope.oscillator.frequency.value
+        };
+
+        if (!$localStorage.savedPatches) {
+            $localStorage.savedPatches = [];
+        }
+        $localStorage.savedPatches.push(patchData);
+
+
+        // Patch Data 
+
+        //localStorage.setItem(text, JSON.stringify(patchData));
+
+        // $scope.savedPatch = $scope.patchData.patchName;
+
+        // $scope.getPatch = $localStorage.getItem($scope.savedPatch);
+
+    };
+
     return;
+
+
+
   });

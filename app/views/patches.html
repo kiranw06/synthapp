@@ -1,5 +1,5 @@
-<div id="page-wrapper" class="clearfix" ng-controller="testaudio">
-<div ng-if="storage.savedCities">
+<div id="page-wrapper" class="clearfix" ng-controller="PatchesCtrl">
+<div ng-if="storage">
 	<div id="info" class="row">
     	<div class="col-xs-8 bg-info center-block">
     		<h1>Patches</h1>
@@ -8,17 +8,17 @@
 	<div id="info" class="row">
 		<div class="col-xs-8 bg-warning center-block">
 
-		<!-- <ul class="saved-cities-list">
-  		  <li ng-repeat="city in storage.savedCities">
-  		    <a ng-href="/#/syth/{{patch.name?}}" class="btn btn-lg btn-primary">{{patch.name?}}</a>
+		<ul class="saved-patches-list">
+  		  <li ng-repeat="name in storage.savedPatches">
+  		    <a ng-href="/#/synth/{{name.patchName}}" class="btn btn-lg btn-primary">{{name.patchName}}</a>
   		  </li>
-  		</ul> -->
-    		<ul>
+  		</ul>
+    	<!-- 	<ul>
     			<li>
     				<a ng-href="#/synth"> Starter </a>
     			</li>
     			<li>Locally Stored Patch</li>
-    		</ul>
+    		</ul> -->
     	</div>
     </div>
 

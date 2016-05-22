@@ -65,7 +65,7 @@
           <span id="patches">
               <p>Save as {{displayText}}</p>
               <input type="text" name="patchName" id="patch-name" ng-model="displayText"/>
-              <button class="btn btn-lrg " ng-hide="isHidden" ng-click="savePatch()">Save</button>
+              <button class="btn btn-lrg " ng-hide="isHidden" ng-click="savePatch(displayText)">Save</button>
               <a class="btn btn-lrg " ng-hide="isHidden" ng-href="/#/patches">View Patches</a>
           </span>
         </div>
@@ -77,8 +77,8 @@
           <h2>
             Canvas
           </h2>
-          <button class="btn btn-lrg glyphicon glyphicon-play" ng-click="oscillator.start()" ng-model="displayButton"></button>
-          <button class="btn btn-lrg glyphicon glyphicon-stop" ng-click="oscillator.stop()" ng-model="displayButton"></button>
+          <button class="btn btn-lrg glyphicon glyphicon-play" ng-click="oscillator.connect(gainNode)" ng-model="displayButton"></button>
+          <button class="btn btn-lrg glyphicon glyphicon-stop" ng-click="oscillator.disconnect(gainNode)" ng-model="displayButton"></button>
           <canvas id="canvas"></canvas>
         </div>
       </div>

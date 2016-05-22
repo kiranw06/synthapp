@@ -10,17 +10,13 @@
 angular.module('synthappApp')
   .controller('PatchesCtrl', function ($scope, $localStorage) {
 
+  	$scope.storage = $localStorage;
   	
 
-  	// $scope.storage = $localStorage;
 
+  	//$scope.savePatch = function ($scope.testaudio) {
 
-  	// $scope.savePatch = function ($scope.testaudio) {
-
-  	// 	var patchData = {
-  	// 		'oscillator' = $scope.oscillator.type,
-  	// 		'frequency' = $scope.oscillator.frequency.value
-  	// 	}
+  		
 
   	// 	 if (!$localStorage.savePatch){
    // 		    $localStorage.savePatch = [saveData];
@@ -44,23 +40,6 @@ angular.module('synthappApp')
   	// 	}
 
 
-  	$scope.savePatch = function() {
-  		// Patch Data 
-  		var input = document.getElementById("patch-name");
-  		localStorage.setItem("patchName", input.value);
-  		console.log(input);
-  		
-  		// octave Data
-  		var octave = document.getElementsByClassName("octave");
-  		localStorage.setItem("octave", octave.innerHTML);
-  		console.log(octave);
-
-  		// Oscilator Data 
-  		var oscillator = document.getElementsByClassName("oscillator");
-  		localStorage.setItem("voulme", oscillator.value);
-  		console.log(oscillator);
-
-  	};
 
   
   });

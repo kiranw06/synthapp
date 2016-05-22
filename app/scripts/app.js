@@ -32,6 +32,11 @@ angular
         controller: 'SynthCtrl',
         controllerAs: 'synth'
       })
+      .when('/synth/:patchName', {
+        templateUrl: 'views/synth.html',
+        controller: 'SynthCtrl',
+        controllerAs: 'synth'
+      })
       .when('/patches', {
         templateUrl: 'views/patches.html',
         controller: 'PatchesCtrl',
